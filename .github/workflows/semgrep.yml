@@ -21,5 +21,4 @@ jobs:
       - name: Run Semgrep Scan
         uses: semgrep/semgrep-action@v1
         with:
-          publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}
-          # Utilisation de la configuration par défaut sans erreur de version
+          config: auto
