@@ -2,26 +2,25 @@ name: Semgrep SAST
 
 on:
   push:
-    branches: [ "main", "master" ]
-
+    branches: ["main", "master"]
   pull_request:
-    branches: [ "main", "master" ]
+    branches: ["main", "master"]
+
+permissions:
+  contents: read
+  security-events: write
 
 jobs:
   semgrep:
     name: Run Semgrep
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-      security-events: write
-      actions: read
+    container:
+      image: semgrep/semgrep:latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Run Semgrep Scan
-        uses: semgrep/semgrep-action@v1
-        with:
-          config: auto
+        run: semgrep scan --config auto --error
