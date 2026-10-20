@@ -1,6 +1,0 @@
-version: 2
-updates:
-  - package-ecosystem: "maven" # ou "npm" selon votre projet (ici adapté pour Java/Maven)
-    directory: "/"
-    schedule:
-      interval: "weekly"
